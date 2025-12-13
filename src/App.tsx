@@ -20,7 +20,7 @@ const App = () => {
       <GridItem area={"side"} bg={"blue.100"} hideBelow={"lg"}>
         Side
       </GridItem>
-      <GridItem area={"main"} bg={"orange.100"}>
+      <GridItem area={"main"}>
         <GameGrid />
       </GridItem>
     </Grid>

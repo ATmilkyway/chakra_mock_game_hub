@@ -1,29 +1,9 @@
-import apiClient from "@/services/apiClient";
-import axios from "axios";
-import { useEffect, useState } from "react";
-
-interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-}
-
-interface FetchGameResponse {
-  count: number;
-  next: string;
-  results: Game[];
-}
+import useGames from "@/hooks/useGames";
 
 const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  useEffect(() => {
-    const controller = new AbortController();
-    apiClient
-      .get<FetchGameResponse>("/games", { signal: controller.signal })
-      .then((res) => setGames(res.data.results));
-    return controller.abort;
-  }, []);
-
+  const { games, error, isLoading } = useGames();
+  if (error) return <p>Something went wrong.</p>;
+  if (isLoading) return <p>Loading...</p>;
   return (
     <div>
       {games.map((game) => (
