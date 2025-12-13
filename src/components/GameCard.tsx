@@ -10,12 +10,10 @@ const GameCard = ({ game }: Props) => {
     <Card.Root maxW="sm" overflow="hidden">
       <Image src={game.background_image} alt={game.name} />
       <Card.Body gap="2">
+        <PlatfromIconList
+          platforms={game.parent_platforms.map(({ platform }) => platform)}
+        />
         <Card.Title fontSize={"2xl"}>{game.name}</Card.Title>
-        <Card.Description>
-          <PlatfromIconList
-            platforms={game.parent_platforms.map(({ platform }) => platform)}
-          />
-        </Card.Description>
       </Card.Body>
     </Card.Root>
   );
