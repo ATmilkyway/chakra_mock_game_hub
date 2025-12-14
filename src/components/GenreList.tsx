@@ -2,7 +2,7 @@ import useGenres from "@/hooks/useGenres";
 import { Button, Heading, HStack, Image, List } from "@chakra-ui/react";
 
 const GenreList = () => {
-  const { genres, error, isLoading } = useGenres();
+  const { data, error, isLoading } = useGenres();
   if (error) return <p>Something went wrong.</p>;
   if (isLoading) return <p>Loading...</p>;
   return (
@@ -11,7 +11,7 @@ const GenreList = () => {
         Genres
       </Heading>
       <List.Root listStyle={"none"}>
-        {genres.map((genre) => (
+        {data.map((genre) => (
           <HStack marginBottom={3} key={genre.id}>
             <Image src={genre.image_background} boxSize={30} borderRadius={8} />
             <Button
