@@ -1,7 +1,10 @@
-import useGenres from "@/hooks/useGenres";
+import useGenres, { type Genre } from "@/hooks/useGenres";
 import { Button, Heading, HStack, Image, List } from "@chakra-ui/react";
 
-const GenreList = () => {
+interface Props {
+  onSelecteGenre: (genre: Genre) => void;
+}
+const GenreList = ({ onSelecteGenre }: Props) => {
   const { data, error, isLoading } = useGenres();
   if (error) return <p>Something went wrong.</p>;
   if (isLoading) return <p>Loading...</p>;
@@ -19,6 +22,7 @@ const GenreList = () => {
               fontSize={"lg"}
               textAlign="left"
               fontWeight={"normal"}
+              onClick={() => onSelecteGenre(genre)}
             >
               <List.Item key={genre.id}>{genre.name}</List.Item>
             </Button>

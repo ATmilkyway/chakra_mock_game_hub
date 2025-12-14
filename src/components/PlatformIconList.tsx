@@ -17,7 +17,7 @@ interface Props {
   platforms: Platform[];
 }
 
-const PlatfromIconList = ({ platforms }: Props) => {
+const PlatformIconList = ({ platforms }: Props) => {
   const iconMap: { [key: string]: IconType } = {
     // PC / Desktop
     pc: FaWindows,
@@ -55,4 +55,4 @@ const PlatfromIconList = ({ platforms }: Props) => {
   );
 };
 
-export default PlatfromIconList;
+export default PlatformIconList;
